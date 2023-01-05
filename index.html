@@ -9,47 +9,36 @@
     <title>Quiz</title>
 
     <link rel="stylesheet" href="./assets/css/style.css">
-""
+
 </head>
 
 <body>
 
-    <div id="container">
+    <div class="container" id="container">
 
         <div id="start">Start Quiz!</div>
-
-        <div id="quiz" style="display: none">
-
+        <div id="quiz">
             <div id="question"></div>
-
-            <div id="choices">
-
-                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-
-                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-
-                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-
-                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-
+            <div id="answers">
+                <div class="answer" id="A" onclick="checkAnswer('A')"></div>
+                <div class="answer" id="B" onclick="checkAnswer('B')"></div>
+                <div class="answer" id="C" onclick="checkAnswer('C')"></div>
+                <div class="answer" id="D" onclick="checkAnswer('D')"></div>
             </div>
-
-            <!-- <div id="timer">
-
+           <div id="timers">
                 <div id="counter"></div>
-
-                <div id="btimeGauge"></div>
-
-                <div id="timeGauge"></div>
-
             </div>
-
-            <div id="progress"></div> -->
-
+            <div id="feedback"></div>
         </div>
-
-        <!-- <div id="scoreContainer" style="display: none"></div> -->
-
+    </div>
+    <div id="end">
+        <div id="score"></div>
+        <form>
+            <label for="initials">Please enter your initials:&nbsp;</label>
+            <input type="text" id="initials" name="initials"><br>
+            <button id="submit" type="submit">Submit</button>
+          </form>
+        <button type="button" id="playagain">Try Again?</button>
     </div>
 
     <script src="./assets/js/script.js"></script>
