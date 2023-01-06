@@ -1,11 +1,23 @@
+* {
+    font-family: Helvetica, Arial, sans-serif
+}
+
+:root {
+    --turq: rgb(0,171,179);
+    --slate: rgb(60,64,72);
+    --dkgrey: rgb(178,178,178);
+    --ltgrey: rgb(234,234,234);
+}
+
 body{
     font-size: 20px;
     font-family: monospace;
+    background-color: var(--slate);
 }
 
 #container{
     margin : 20px auto;
-    background-color: white;
+    background-color: var(--ltgrey);
     height: 300px;
     width : 700px;
     border-radius: 5px;
@@ -18,17 +30,17 @@ body{
     word-break: break-all;
     width:100px;
     height:150px;
-    border : 2px solid lightgrey;
+    border : 2px solid var(--dkgrey);
     text-align: center;
     cursor: pointer;
     position: absolute;
     left:300px;
     top:50px;
-    color : lightgrey;
+    color : var(--dkgrey);
 }
 #start:hover{
-    border: 3px solid lightseagreen;
-    color : lightseagreen;
+    border: 3px solid var(--turq);
+    color : var(--turq);
 }
 
 #question{
@@ -55,13 +67,13 @@ body{
     display: inline-block;
     width : 135px;
     text-align: center;
-    border : 1px solid grey;
+    border : 1px solid var(--slate);
     border-radius: 5px;
     cursor: pointer;
     padding : 5px;
 }
 .answer:hover{
-    border : 2px solid grey;
+    border : 2px solid var(--slate);
     font-weight: bold;
 }
 
@@ -75,20 +87,7 @@ body{
 #counter{
     font-size: 1.5em;
 }
-#btimeGauge{
-    width : 150px;
-    height : 10px;
-    border-radius: 10px;
-    background-color: lightgray;
-    margin-left : 25px;
-}
-#timeGauge{
-    height : 10px;
-    border-radius: 10px;
-    background-color: mediumseagreen;
-    margin-top : -10px;
-    margin-left : 25px;
-}
+
 #progress{
     width : 500px;
     position: absolute;
@@ -106,8 +105,13 @@ body{
     margin-left : 5px;
     margin-right : 5px;
 }
-#score{
+#scoreboard{
     font-size: 1.5em;
+    display: none;
+}
+
+#endbutton {
+    display:none;
 }
 
 #quiz{
@@ -116,7 +120,7 @@ body{
 
 #end{
     margin : 20px auto;
-    background-color: white;
+    background-color: var(--ltgrey);
     height: 300px;
     width : 700px;
     border-radius: 5px;

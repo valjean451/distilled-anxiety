@@ -32,13 +32,19 @@
         </div>
     </div>
     <div id="end">
-        <div id="score"></div>
-        <form>
+        <div id="scoreboard">
+            <h1 class="heading">Highscores:</h2><br>
+            <h2 class="heading">Player - Score</h2>
+        </div>
+        <form id="endform">
             <label for="initials">Please enter your initials:&nbsp;</label>
             <input type="text" id="initials" name="initials"><br>
             <button id="submit" type="submit">Submit</button>
-          </form>
-        <button type="button" id="playagain">Try Again?</button>
+        </form>
+        <div id="endbutton">
+          <button type="button" id="clear">Reset Score History</button><br>
+          <button type="button" id="playagain">Try Again?</button>
+        </div>
     </div>
 
     <script src="./assets/js/script.js"></script>
