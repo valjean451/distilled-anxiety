@@ -7,17 +7,19 @@ var ansB = document.getElementById("B");
 var ansC = document.getElementById("C");
 var ansD = document.getElementById("D");
 var counterEl = document.getElementById("counter")
-var scoreEl = document.getElementById("score")
 var feedbackEl = document.getElementById("feedback")
 var timeLeft = 60
-var score = 0
 var timerInterval
 var containerEl = document.getElementById("container")
 var endEl = document.getElementById("end")
 var submitScoreBtn = document.getElementById("submit")
 var initialsInput = document.getElementById("initials")
-var scoreboardEl = document.getElementById("score")
-var scoreHistory = {}
+var scoreboardEl = document.getElementById("scoreboard")
+var restartBtn = document.getElementById("playagain")
+var formEl = document.getElementById("endform")
+var endBtnEl = document.getElementById("endbutton")
+var clearBtnEl = document.getElementById("clear")
+
 
 var questions = [
     {
@@ -66,10 +68,8 @@ function presentQuestion (){
     ansD.innerHTML = currentQ.ansD;
 }
 
-
 function checkAnswer(answer) {
     if(questions[currentQuestionIndex].correct == answer){
-        score = score + 5
         feedbackEl.innerText = "Correct!"
     }else{
         feedbackEl.innerText = "Incorrect..."
@@ -83,7 +83,7 @@ function checkAnswer(answer) {
             counterEl.innerHTML = "<p>Time:<br>" + timeLeft + "</p>";
         }
     }
-    
+
     if(currentQuestionIndex < finalQuestionIndex){
         currentQuestionIndex++;
         presentQuestion();
@@ -93,8 +93,6 @@ function checkAnswer(answer) {
     }
     console.log(currentQuestionIndex)
 }
-
-
 
 function goTime () {
     timerInterval = setInterval(function() {
@@ -115,35 +113,48 @@ function endGame () {
 submitScoreBtn.addEventListener("click", function(event) {
     event.preventDefault();
     var testScore = {
-        result: score,
+        result: timeLeft,
         init: initialsInput.value,
     }
-    appendToStorage("lastResult", JSON.stringify(testScore));
-    createScoreboard();
-
+    var existingScores = JSON.parse(localStorage.getItem("scores"));
+    if(existingScores == null) existingScores = [];
+    existingScores.push(testScore);
+    localStorage.setItem("scores", JSON.stringify(existingScores));
+    formEl.setAttribute("style", "display: none")
+    createScoreboard()
 })
 
-
-
-function appendToStorage(name, data){
-    var old = localStorage.getItem(name);
-    if(old === null) old = "";
-    localStorage.setItem(name, old + data);
-}
-
-
 function createScoreboard () {
-    // scoreboardEl.innerHTML("Initials:   Score:")
-    scoreHistory = JSON.parse(localStorage.getItem("lastResult"));
+    scoreboardEl.setAttribute("style", "display: block")
+    endBtnEl.setAttribute("style", "display: block")
+    var scoreHistory = JSON.parse(localStorage.getItem("scores"));
     console.log(scoreHistory)
     console.log(typeof(scoreHistory))
     if (scoreHistory !== null) {
-        for (let index = 0; index < scoreHistory.length; index++) {
-            scoreboardEl.innerHTML("hello")
-            
-        }
-    }
-}
+        var sortedScores = scoreHistory.sort((s1, s2) => (s1.result > s2.result) ? -1 : (s1.result < s2.result) ? 1 : 0)
+        console.log(sortedScores)
+        for (let index = 0; index < sortedScores.length; index++) {
+            var pEl = document.createElement("p")
+            pEl.setAttribute("class", "scoreline")
+            pEl.innerText = sortedScores[index].init + " - " + sortedScores[index].result
+            scoreboardEl.append(pEl)
+}}}
 
-// need to find a way to sort the scores before they get appended 
-// need to find out why items are not appending to the score element
+restartBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    location.reload();
+})
+
+clearBtnEl.addEventListener("click", function(event){
+    event.preventDefault();
+    localStorage.clear();
+    var childP = document.querySelectorAll(".scoreline")
+    console.log(childP)
+    childP.forEach(scoreline =>{
+        scoreline.remove()
+    })
+})
+
+
+//ideas on how to improve this later: 
+//render questions in a random order, but only once
