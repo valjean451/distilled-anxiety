@@ -20,7 +20,6 @@ var formEl = document.getElementById("endform")
 var endBtnEl = document.getElementById("endbutton")
 var clearBtnEl = document.getElementById("clear")
 
-
 var questions = [
     {
         question: "How do you find the area of a square?",
@@ -158,3 +157,4 @@ clearBtnEl.addEventListener("click", function(event){
 
 //ideas on how to improve this later: 
 //render questions in a random order, but only once
+//add field validation for initials
