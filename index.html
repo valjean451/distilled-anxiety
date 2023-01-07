@@ -13,9 +13,8 @@
 </head>
 
 <body>
-
+    <div class="mainarea">
     <div class="container" id="container">
-
         <div id="start">Start Quiz!</div>
         <div id="quiz">
             <div id="question"></div>
@@ -25,28 +24,28 @@
                 <div class="answer" id="C" onclick="checkAnswer('C')"></div>
                 <div class="answer" id="D" onclick="checkAnswer('D')"></div>
             </div>
-           <div id="timers">
-                <div id="counter"></div>
-            </div>
             <div id="feedback"></div>
         </div>
     </div>
+    <div id="timers">
+        <div id="counter"></div>
+    </div>
     <div id="end">
         <div id="scoreboard">
-            <h1 class="heading">Highscores:</h2><br>
+            <h1 class="heading">Highscores</h1>
             <h2 class="heading">Player - Score</h2>
         </div>
         <form id="endform">
-            <label for="initials">Please enter your initials:&nbsp;</label>
+            <label for="initials" class="formlabel">Please enter your initials:&nbsp;</label><br>
             <input type="text" id="initials" name="initials"><br>
             <button id="submit" type="submit">Submit</button>
         </form>
         <div id="endbutton">
-          <button type="button" id="clear">Reset Score History</button><br>
+          <button type="button" id="clear">Reset Score History</button>
           <button type="button" id="playagain">Try Again?</button>
         </div>
     </div>
-
+    </div>
     <script src="./assets/js/script.js"></script>
 
 </body>

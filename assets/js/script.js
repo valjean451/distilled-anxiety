@@ -1,3 +1,4 @@
+// Global variables
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
@@ -6,7 +7,7 @@ var ansA = document.getElementById("A");
 var ansB = document.getElementById("B");
 var ansC = document.getElementById("C");
 var ansD = document.getElementById("D");
-var counterEl = document.getElementById("counter")
+var counterEl = document.getElementById("timers")
 var feedbackEl = document.getElementById("feedback")
 var timeLeft = 60
 var timerInterval
@@ -19,7 +20,7 @@ var restartBtn = document.getElementById("playagain")
 var formEl = document.getElementById("endform")
 var endBtnEl = document.getElementById("endbutton")
 var clearBtnEl = document.getElementById("clear")
-
+var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 var questions = [
     {
@@ -49,12 +50,14 @@ var questions = [
 var finalQuestionIndex = questions.length -1;
 var currentQuestionIndex = 0;
 
+//Initialize quiz
 start.addEventListener("click", startQuiz);
 
 function startQuiz (){
     start.setAttribute("style", "display: none")
     presentQuestion();
-    quiz.setAttribute("style", "display: block")
+    quiz.setAttribute("style", "display: flex")
+    counterEl.setAttribute("style", "display: flex")
     counterEl.innerHTML = "<p>Time:<br>" + timeLeft + "</p>";
     goTime()
 }
@@ -105,16 +108,32 @@ function goTime () {
     },1000)
 }
 
+//Test Complete
 function endGame () {
     containerEl.setAttribute("style", "display: none")
-    endEl.setAttribute("style", "display: block")
+    endEl.setAttribute("style", "display: flex")
+    counterEl.setAttribute("style", "display: none")
 }
 
 submitScoreBtn.addEventListener("click", function(event) {
     event.preventDefault();
+    var inputVal = initialsInput.value
+    inputVal = inputVal.toUpperCase()
+    console.log(typeof(inputVal))
+    console.log(inputVal)
+    if (inputVal == "") {
+        alert("Please enter your initials.");
+        return;
+    }
+    for (let i = 0; i < inputVal.length; i++) {
+        if (uppercaseLetters.includes(inputVal[i]) == false) {
+            alert("Please enter only alphabetical characters (a-z).")
+            return;
+        }
+    }
     var testScore = {
         result: timeLeft,
-        init: initialsInput.value,
+        init: inputVal,
     }
     var existingScores = JSON.parse(localStorage.getItem("scores"));
     if(existingScores == null) existingScores = [];
@@ -124,8 +143,9 @@ submitScoreBtn.addEventListener("click", function(event) {
     createScoreboard()
 })
 
+//Show Score History
 function createScoreboard () {
-    scoreboardEl.setAttribute("style", "display: block")
+    scoreboardEl.setAttribute("style", "display: flex")
     endBtnEl.setAttribute("style", "display: block")
     var scoreHistory = JSON.parse(localStorage.getItem("scores"));
     console.log(scoreHistory)
@@ -140,11 +160,13 @@ function createScoreboard () {
             scoreboardEl.append(pEl)
 }}}
 
+//Play again
 restartBtn.addEventListener("click", function (event) {
     event.preventDefault();
     location.reload();
 })
 
+//Reset Scores
 clearBtnEl.addEventListener("click", function(event){
     event.preventDefault();
     localStorage.clear();
@@ -156,5 +178,8 @@ clearBtnEl.addEventListener("click", function(event){
 })
 
 
+
 //ideas on how to improve this later: 
 //render questions in a random order, but only once
+//add field validation for initials
+//find better ways to compute score (reward correct answers?)

@@ -3,7 +3,7 @@
 }
 
 :root {
-    --turq: rgb(0,171,179);
+    --turq: rgba(0, 170, 179, 0.738);
     --slate: rgb(60,64,72);
     --dkgrey: rgb(178,178,178);
     --ltgrey: rgb(234,234,234);
@@ -11,91 +11,100 @@
 
 body{
     font-size: 20px;
-    font-family: monospace;
-    background-color: var(--slate);
+    background-color: var(--turq);
+}
+
+.mainarea{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
 }
 
 #container{
-    margin : 20px auto;
     background-color: var(--ltgrey);
-    height: 300px;
-    width : 700px;
+    margin: 20px;
+    height: 400px;
+    width : 45%;
     border-radius: 5px;
     box-shadow: 0px 5px 15px 0px;
-    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
 }
+
 #start{
     font-size: 1.5em;
     font-weight: bolder;
-    word-break: break-all;
-    width:100px;
-    height:150px;
-    border : 2px solid var(--dkgrey);
+    background-color: green;
     text-align: center;
     cursor: pointer;
-    position: absolute;
     left:300px;
     top:50px;
-    color : var(--dkgrey);
+    color : white;
+    padding: 10px;
 }
+
 #start:hover{
-    border: 3px solid var(--turq);
-    color : var(--turq);
+    border: 2px solid var(--slate);
+    color : var(--slate);
 }
 
 #question{
-    width:500px;
-    height : 125px;
-    position: absolute;
-    right:0;
-    top:0;
+    width:100%;
+    height : 175px;
+    margin: 20px 0x 0px 20px;
+    padding-left: 20px;
+    align-self: flex-start;
 }
 #question p{
     margin : 0;
     padding : 15px;
-    font-size: 1.25em;
+    font-size: 36px;
 }
 
 #answers{
-    width : 480px;
-    position: absolute;
-    right : 0;
-    top : 125px;
-    padding : 10px
+    display: flex;
+    padding : 10px;
+    flex-flow: column wrap;
+    align-self: flex-start;
 }
 .answer{
-    display: inline-block;
-    width : 135px;
+    width : 200px;
     text-align: center;
     border : 1px solid var(--slate);
     border-radius: 5px;
     cursor: pointer;
     padding : 5px;
+    margin: 0px 0px 10px 20px;
+    align-self: flex-start;
+    
 }
 .answer:hover{
     border : 2px solid var(--slate);
     font-weight: bold;
+    background-color: var(--turq);
 }
 
 #timers{
-    position: absolute;
-    height : 100px;
-    width : 200px;
-    bottom : 0px;
+    height : 250px;
+    width : 250px;
+    background-color: var(--ltgrey);
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px;
+    margin-left: 100px;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    font-size: 36pt;
+    font-weight: bold;
 }
 #counter{
     font-size: 1.5em;
 }
 
-#progress{
-    width : 500px;
-    position: absolute;
-    bottom : 0px;
-    right : 0px;
-    padding:5px;
-    text-align: right;
-}
 .prog{
     width : 25px;
     height : 25px;
@@ -108,6 +117,29 @@ body{
 #scoreboard{
     font-size: 1.5em;
     display: none;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
+    min-height: 300px;
+}
+
+#scoreboard p {
+    font-size: 16px;
+    margin: 0px 0px 10px 75px;
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+#scoreboard h1 {
+    font-size: 44px;
+    margin-bottom: 20px;
+}
+
+#scoreboard h2 {
+    font-size: 24px;
+    margin: 0px 0px 10px 65px;
+    align-self: flex-start;
+    text-decoration: underline;
 }
 
 #endbutton {
@@ -116,15 +148,72 @@ body{
 
 #quiz{
     display: none;
+    height: inherit;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: left;
+    flex-flow: column nowrap;
+    align-items: center;
 }
 
 #end{
     margin : 20px auto;
     background-color: var(--ltgrey);
-    height: 300px;
-    width : 700px;
+    width : 50%;
     border-radius: 5px;
     box-shadow: 0px 5px 15px 0px;
     position: relative;
     display: none;
+    height: max-content;
+    min-height: 300px;
+    flex-flow: column wrap;
+    align-items: center;
 }
+
+#endform {
+    margin: 60px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.formlabel {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#submit, #clear, #playagain {
+    font-size: 24px;
+    width: 300px;
+    background-color: var(--slate);
+    color: var(--ltgrey);
+    border-radius: 4px;
+    border: 2px solid var(--slate);
+    box-shadow: 0px 5px 15px 0px;
+    cursor: pointer;
+    margin: 20px 0px 20px 0px;
+    align-self: flex-end;
+}
+
+#submit:hover, #clear:hover, #playagain:hover {
+    color: var(--slate);
+    background-color: var(--ltgrey);
+    border: 1px solid var(--slate);
+    font-weight: bold;
+}
+
+#initials {
+    font-size: 24px;
+    width: 100px;
+}
+
+#feedback {
+    font-size: 28px;
+    font-style: italic;
+    margin: -20px 20px 25px 0px;
+    align-self: flex-end;
+}
+
+/* ideas on how to improve later:
+--include @media queries for reacive mobile design
+*/
