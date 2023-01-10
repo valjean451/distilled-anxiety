@@ -1,3 +1,4 @@
+/* General Rules */
 * {
     font-family: Helvetica, Arial, sans-serif
 }
@@ -14,6 +15,7 @@ body{
     background-color: var(--turq);
 }
 
+/* Content Area */
 .mainarea{
     display: flex;
     flex-flow: row nowrap;
@@ -34,23 +36,26 @@ body{
     justify-content: center;
 }
 
+/* Initialize Test */
 #start{
     font-size: 1.5em;
     font-weight: bolder;
-    background-color: green;
+    background-color: var(--slate);
     text-align: center;
     cursor: pointer;
     left:300px;
     top:50px;
     color : white;
     padding: 10px;
+    border-radius: 4px;
 }
 
 #start:hover{
-    border: 2px solid var(--slate);
+    background-color: var(--turq);
     color : var(--slate);
 }
 
+/* Render Test */
 #question{
     width:100%;
     height : 175px;
@@ -105,15 +110,14 @@ body{
     font-size: 1.5em;
 }
 
-.prog{
-    width : 25px;
-    height : 25px;
-    border: 1px solid #000;
-    display: inline-block;
-    border-radius: 50%;
-    margin-left : 5px;
-    margin-right : 5px;
+#feedback {
+    font-size: 28px;
+    font-style: italic;
+    margin: -20px 20px 25px 0px;
+    align-self: flex-end;
 }
+
+/* Post-Test */
 #scoreboard{
     font-size: 1.5em;
     display: none;
@@ -140,10 +144,6 @@ body{
     margin: 0px 0px 10px 65px;
     align-self: flex-start;
     text-decoration: underline;
-}
-
-#endbutton {
-    display:none;
 }
 
 #quiz{
@@ -182,6 +182,10 @@ body{
     font-weight: bold;
 }
 
+#endbutton {
+    display:none;
+}
+
 #submit, #clear, #playagain {
     font-size: 24px;
     width: 300px;
@@ -205,13 +209,6 @@ body{
 #initials {
     font-size: 24px;
     width: 100px;
-}
-
-#feedback {
-    font-size: 28px;
-    font-style: italic;
-    margin: -20px 20px 25px 0px;
-    align-self: flex-end;
 }
 
 /* ideas on how to improve later:
