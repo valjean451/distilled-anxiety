@@ -24,26 +24,47 @@ var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "
 
 var questions = [
     {
-        question: "How do you find the area of a square?",
-        ansA: "L x W",
-        ansB: "Pray",
-        ansC: "Ask your teacher",
-        ansD: "b x h / 2",
+        question: "Which 'loop' executes code for each item in an iterable list (such as an array or string)?",
+        ansA: "For Loop",
+        ansB: "Against Loop",
+        ansC: "While Loop",
+        ansD: "Else Loop",
         correct: "A"
     },{
-        question: "How do you find the area of a triangle?",
-        ansA: "L x W",
-        ansB: "Pray",
-        ansC: "Ask your teacher",
-        ansD: "b x h / 2",
+        question: "Which 'loop' continues to execute as long as a given logical statement is true?",
+        ansA: "Else Loop",
+        ansB: "For Loop",
+        ansC: "Against Loop",
+        ansD: "While Loop",
         correct: "D"
     },{
-        question: "What should you do if you don't understand something?",
-        ansA: "L x W",
-        ansB: "Pray",
-        ansC: "Ask your teacher",
-        ansD: "b x h / 2",
+        question: "Which HTML tag is used to reference an external JavaScript file?",
+        ansA: "a",
+        ansB: "script",
+        ansC: "img",
+        ansD: "ref",
+        correct: "B"
+    },{
+        question: "Which element refers to a 'true' or 'false' value?",
+        ansA: "Boolean",
+        ansB: "Integer",
+        ansC: "String",
+        ansD: "Array",
+        correct: "A"
+    },{
+        question: "A block of code that is 'called' to perform a specific function is?",
+        ansA: "a Variable",
+        ansB: "a Scope",
+        ansC: "a Function",
+        ansD: "a Constant",
         correct: "C"
+    },{
+        question: "Which describes the behavior of moving declarations to the top of the scope?",
+        ansA: "Routing",
+        ansB: "Hoisting",
+        ansC: "Ascending",
+        ansD: "Looping",
+        correct: "B"
     }
 ]
 
@@ -177,9 +198,9 @@ clearBtnEl.addEventListener("click", function(event){
     })
 })
 
-
-
 //ideas on how to improve this later: 
 //render questions in a random order, but only once
 //add field validation for initials
 //find better ways to compute score (reward correct answers?)
+//number the questions using the index variable
+//number the highscores using the index in the loop
